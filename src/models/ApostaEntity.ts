@@ -1,5 +1,4 @@
-import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Campeonato } from "./CampeonatoEntity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Partida } from "./PartidaEntity";
 import { Usuario } from "./UsuarioEntity";
 

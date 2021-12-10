@@ -55,4 +55,26 @@ export class ApostaService implements IApostaService {
       throw error;
     }
   }
+  async visualizarApostas(usuarioId: number ): Promise<Aposta[]> {
+    try {
+      let result: any;
+      let novaApostas: Aposta[] = [];
+      const usuario = await this.usuarioRepository.findById(usuarioId);
+      if (usuario == undefined) {
+        throw Error("não existe usuario")
+      }
+      const campeonato = await this.campeonatoRepository.findByStatus();
+      if (campeonato == undefined) {
+        throw Error("não existe campeonato")
+      }
+      const apostas = await this.apostaRepository.findByPartidaByCampeonato(usuario,campeonato);
+      if (apostas == undefined) {
+        throw Error("não existe aposta")
+      }
+      return apostas;
+    } catch (error) {
+      throw error;
+    }
+  }
+  
 }
